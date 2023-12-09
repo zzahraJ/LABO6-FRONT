@@ -3,24 +3,27 @@ import { ref, onMounted } from 'vue';
 
 let socket = null;
 
+let team = ref(null);
+let score = ref(null);
+
 // Initial teams with scores
 
-const teams = ref([
-  {team: 'De gele eendjes', score: 0},
-  {team: 'De blauwe eendjes', score: 0},
-  {team: 'De rode eendjes', score: 0},
-  {team: 'De groene eendjes', score: 0},
+const Score = ref([
+  'De gele eendjes',
+  'De blauwe eendjes',
+  'De rode eendjes',
+  'De groene eendjes',
 ]);
 
 onMounted(() => {
     socket = new WebSocket('wss://labo6-back-a3tg.onrender.com/primus');
 });
 
-const updateScore = (team, score) => {
+const updateScore = () => {
     socket.send(JSON.stringify({
-        action: 'updateScore', 
-        team: team, 
-        score: score
+        "action": 'updateScore', 
+        "team": team.value, 
+        "score": score.value,
     }));
 }
 
@@ -31,7 +34,7 @@ const updateScore = (team, score) => {
     <h1>Update Score</h1>
     <label for="teamSelector">Select your team</label>
     <select v-model="team" id="teamSelector">
-        <option v-for="t in teamScores">
+        <option v-for="t in Score">
           {{ t }}
         </option>
       </select>
