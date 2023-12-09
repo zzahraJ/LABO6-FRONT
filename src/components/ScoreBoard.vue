@@ -13,7 +13,7 @@ const teams = ref([
 
 onMounted(() => {
 
-socket = new WebSocket('https://labo6-back-a3tg.onrender.com/primus');
+socket = new WebSocket('wss://labo6-back-a3tg.onrender.com/primus');
 
 socket.onmessage = (event) => {
   const score = JSON.parse(event.data);
