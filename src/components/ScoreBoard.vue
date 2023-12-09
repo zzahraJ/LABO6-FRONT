@@ -19,12 +19,12 @@ socket.onmessage = (event) => {
   const score = JSON.parse(event.data);
   console.log(score);
   if (score.action === 'updateScore') {
-    // Check if the team is one of the default teams
+   
     let teamSelected = teams.value.findIndex(
       (t) => t.team === score.team
     );
     if (teamSelected !== -1) {
-      // Update the score for the default team
+     
       teams.value[teamSelected].score = score.score;
     }
   }
