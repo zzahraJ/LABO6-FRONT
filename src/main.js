@@ -4,7 +4,7 @@ import App from './App.vue'
 
 //import components
 import UpdateScore from './components/UpdateScore.vue'
-import Scoreboard from './components/Scoreboard.vue'
+import Scoreboard from './components/ScoreBoard.vue'
 
 //import vue router
 import * as VueRouter from 'vue-router'
